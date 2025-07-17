@@ -50,7 +50,7 @@ func NewRegCmdHandler() *RegCmdHandler {
 func (self *RegCmdHandler) RegHttpCmd() {
 	logger.Infof("register http transaction commands")
 
-	self.ChMgr.HttpRegister("MsgSecCheck", MsgSecCheck) //msg security check
+	self.ChMgr.HttpRegister("msgSecCheck", MsgSecCheck) //msg security check
 }
 
 /**
