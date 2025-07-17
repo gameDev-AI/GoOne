@@ -1,7 +1,7 @@
 package main
 
 /*
-该工具从github个人仓库拷贝过来，仅共使用
+该工具从github个人仓库拷贝过来，仅供使用
 */
 
 import (
