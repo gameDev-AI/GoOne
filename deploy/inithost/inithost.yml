@@ -60,7 +60,7 @@
     # 创建 core 文件目录（Ubuntu 路径保持不变）
     - name: Create core dump directory
       file:
-        path: /data/PokerGo/cores/
+        path: /data/GoOne/cores/
         owner: root
         group: root
         mode: '0755'
@@ -78,7 +78,7 @@
     - name: Configure core pattern
       sysctl:
         name: kernel.core_pattern
-        value: /data/PokerGo/cores/core_%e_%p
+        value: /data/GoOne/cores/core_%e_%p
         sysctl_set: yes
         state: present
         reload: yes

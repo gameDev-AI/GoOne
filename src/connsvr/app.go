@@ -35,7 +35,7 @@ func (self *AppSvrImpl) OnInit() error {
 	}
 
 	// init zap logger
-	if _, err = logger.InitLogger(gconf.ConnSvrCfg.ConnSvr.LogDir, gconf.ConnSvrCfg.ConnSvr.LogLevel, "connsvr"); err != nil {
+	if _, err = logger.InitLogger(gconf.ConnSvrCfg.LogDir, gconf.ConnSvrCfg.LogLevel, "connsvr"); err != nil {
 		return err
 	}
 

@@ -6,15 +6,15 @@
     state: directory
     mode: '0755'
   with_items:
-    - /data/PokerGo/
-    - /data/PokerGo/connsvr/
-    - /data/PokerGo/logs/
-    - /data/PokerGo/logs/connsvr
+    - /data/GoOne/
+    - /data/GoOne/connsvr/
+    - /data/GoOne/logs/
+    - /data/GoOne/logs/connsvr
   tags: 'connsvr_init'
 - name: '[connsvr] Copy scripts'
   copy:
     src: ./scripts/server.sh
-    dest: /data/PokerGo/connsvr/server.sh
+    dest: /data/GoOne/connsvr/server.sh
     mode: '0755'
   tags: "connsvr_init"
 
@@ -22,32 +22,32 @@
 - name: '[connsvr] Copy bin'
   copy:
     src: ../build/connsvr
-    dest: /data/PokerGo/connsvr/connsvr
+    dest: /data/GoOne/connsvr/connsvr
     mode: '0755'
     backup: yes
   tags: "connsvr_push"
 
 - name: '[connsvr] start connsvr'
-  shell: cd /data/PokerGo/connsvr; ./server.sh start; ./server.sh check
+  shell: cd /data/GoOne/connsvr; ./server.sh start; ./server.sh check
   ignore_errors: yes
   tags: 'connsvr_start'
 
 - name: '[connsvr] stop connsvr'
-  shell: cd /data/PokerGo/connsvr; ./server.sh stop
+  shell: cd /data/GoOne/connsvr; ./server.sh stop
   ignore_errors: yes
   tags: 'connsvr_stop'
 
 - name: '[connsvr] restart connsvr'
-  shell: cd /data/PokerGo/connsvr; ./server.sh restart; ./server.sh check
+  shell: cd /data/GoOne/connsvr; ./server.sh restart; ./server.sh check
   ignore_errors: yes
   tags: 'connsvr_restart'
 
 - name: '[connsvr] check connsvr'
-  shell: cd /data/PokerGo/connsvr; ./server.sh check
+  shell: cd /data/GoOne/connsvr; ./server.sh check
   ignore_errors: yes
   tags: 'connsvr_check'
 
 - name: '[connsvr] delLog connsvr'
-  shell: cd /data/PokerGo/logss/connsvr; rm ./*
+  shell: cd /data/GoOne/logss/connsvr; rm ./*
   ignore_errors: yes
   tags: 'connsvr_delLog'

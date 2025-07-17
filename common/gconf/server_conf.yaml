@@ -85,3 +85,13 @@ roomcentersvr:
 texassvr:
   SelfBusId: '1.1.50.{{ instance_id }}'
 
+websvr:
+  SelfBusId: '1.1.12.{{ instance_id }}'
+  log_dir: ./logs
+  log_level: debug
+
+  http_server:
+    port: 10001
+    session_name: GoOne@Gin.Seeeion
+    mode: debug
+    auth_enable: false

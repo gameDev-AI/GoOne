@@ -15,10 +15,10 @@
     - gamedata
     - connsvr
     - mainsvr
-    - texassvr
     - infosvr
     - mysqlsvr
-    - roomcentersvr
+    - websvr
+ #   - roomcentersvr
 #    - mailsvr
 #    - friendsvr
  #   - chatsvr

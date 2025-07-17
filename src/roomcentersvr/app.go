@@ -40,7 +40,7 @@ func (a *RoomMgrSvrImpl) OnInit() error {
 	}
 
 	// init zap logger
-	if _, err = logger.InitLogger(gconf.RoomCenterSvrCfg.RoomCenterSvr.LogDir, gconf.RoomCenterSvrCfg.RoomCenterSvr.LogLevel, "roomcentersvr"); err != nil {
+	if _, err = logger.InitLogger(gconf.RoomCenterSvrCfg.LogDir, gconf.RoomCenterSvrCfg.LogLevel, "roomcentersvr"); err != nil {
 		return err
 	}
 

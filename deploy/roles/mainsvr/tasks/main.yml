@@ -6,47 +6,47 @@
     state: directory
     mode: '0755'
   with_items:
-    - /data/PokerGo/
-    - /data/PokerGo/mainsvr/
-    - /data/PokerGo/logs/
-    - /data/PokerGo/logs/mainsvr
+    - /data/GoOne/
+    - /data/GoOne/mainsvr/
+    - /data/GoOne/logs/
+    - /data/GoOne/logs/mainsvr
   tags: 'mainsvr_init'
 - name: '[mainsvr] Copy scripts'
   copy:
     src: ./scripts/server.sh
-    dest: /data/PokerGo/mainsvr/server.sh
+    dest: /data/GoOne/mainsvr/server.sh
     mode: '0755'
   tags: "mainsvr_init"
 
 - name: '[mainsvr] Copy bin'
   copy:
     src: ../build/mainsvr
-    dest: /data/PokerGo/mainsvr/mainsvr
+    dest: /data/GoOne/mainsvr/mainsvr
     mode: '0755'
     backup: yes
   tags: "mainsvr_push"
 
 - name: '[mainsvr] start mainsvr'
-  shell: cd /data/PokerGo/mainsvr; ./server.sh start; ./server.sh check
+  shell: cd /data/GoOne/mainsvr; ./server.sh start; ./server.sh check
   ignore_errors: yes
   tags: 'mainsvr_start'
 
 - name: '[mainsvr] stop mainsvr'
-  shell: cd /data/PokerGo/mainsvr; ./server.sh stop
+  shell: cd /data/GoOne/mainsvr; ./server.sh stop
   ignore_errors: yes
   tags: 'mainsvr_stop'
 
 - name: '[mainsvr] restart mainsvr'
-  shell: cd /data/PokerGo/mainsvr; ./server.sh restart; ./server.sh check
+  shell: cd /data/GoOne/mainsvr; ./server.sh restart; ./server.sh check
   ignore_errors: yes
   tags: 'mainsvr_restart'
 
 - name: '[mainsvr] check mainsvr'
-  shell: cd /data/PokerGo/mainsvr; ./server.sh check
+  shell: cd /data/GoOne/mainsvr; ./server.sh check
   ignore_errors: yes
   tags: 'mainsvr_check'
 
 - name: '[mainsvr] delLog mainsvr'
-  shell: cd /data/PokerGo/logs/mainsvr; rm ./*
+  shell: cd /data/GoOne/logs/mainsvr; rm ./*
   ignore_errors: yes
   tags: 'mainsvr_delLog'

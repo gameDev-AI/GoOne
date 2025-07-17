@@ -32,7 +32,6 @@ allbuild() {
 	sleep 1
 	build
 }
-
 #excel build and import    
 excel() {
 	cd $ROOT_DIR/excel && ./run_me.sh

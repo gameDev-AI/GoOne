@@ -17,7 +17,7 @@ if [[ $# < 2 ]]; then
 fi
 
 #所有的role
-ALL_TARGET_ROLES=("commconf" "gamedata" "connsvr" "mainsvr" "infosvr" "mysqlsvr" "gamesvr" "mailsvr" "friendsvr" "chatsvr" "ranksvr" "guildsvr" "roomcentersvr" "texassvr")
+ALL_TARGET_ROLES=("commconf" "gamedata" "connsvr" "mainsvr" "infosvr" "mysqlsvr" "gamesvr" "mailsvr" "friendsvr" "chatsvr" "websvr" "guildsvr" "roomcentersvr")
 
 #如果命令行没有指明role，则默认为所有role
 target_role=()

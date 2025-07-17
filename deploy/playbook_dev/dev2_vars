@@ -1,4 +1,4 @@
-root_path: /data/PokerGo
+root_path: /data/GoOne
 zk_address: 127.0.0.1:2181
 rabbitmq_address: amqp://guest:guest@127.0.0.1:5672/
 redis_ip: 127.0.0.1

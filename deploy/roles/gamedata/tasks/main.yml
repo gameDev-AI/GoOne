@@ -5,8 +5,8 @@
     state: directory
     mode: '0755'
   with_items:
-    - /data/PokerGo/
-    - /data/PokerGo/gamedata/
+    - /data/GoOne/
+    - /data/GoOne/gamedata/
   tags: 'gamedata_init'
 
 - name: '[gamedata] Gen tar ball'
@@ -17,15 +17,15 @@
 - name: '[gamedata] Copy gamedata tar ball'
   copy:
     src: ../common/gamedata/data/gamedata.tar
-    dest: /data/PokerGo/gamedata.tar
+    dest: /data/GoOne/gamedata.tar
   tags: "gamedata_push"
 
 - name: '[gamedata] unzip gamedata tar ball'
-  shell: cd /data/PokerGo/; tar xvf gamedata.tar -C ./gamedata; rm gamedata.tar
+  shell: cd /data/GoOne/; tar xvf gamedata.tar -C ./gamedata; rm gamedata.tar
   ignore_errors: yes
   tags: 'gamedata_push'
 
 - name: '[gamedata] delLog gamedata'
-  shell: cd /data/PokerGo/logs/gamedata; rm ./*
+  shell: cd /data/GoOne/logs/gamedata; rm ./*
   ignore_errors: yes
   tags: 'gamedata_delLog'

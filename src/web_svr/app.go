@@ -38,6 +38,11 @@ func (self *AppSvrImpl) OnInit() error {
 		return err
 	}
 
+	// init zap logger
+	if _, err = logger.InitLogger(gconf.WebSvrCfg.LogDir, gconf.WebSvrCfg.LogLevel, "websvr"); err != nil {
+		return err
+	}
+
 	//-- open pprof
 	if gconf.WebSvrCfg.Pprof {
 		go func() {

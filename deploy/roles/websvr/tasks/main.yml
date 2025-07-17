@@ -1,0 +1,52 @@
+---
+
+- name: '[websvr] Create a directory if it does not exist'
+  file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  with_items:
+    - /data/GoOne/
+    - /data/GoOne/websvr/
+    - /data/GoOne/logs/
+    - /data/GoOne/logs/websvr
+  tags: 'websvr_init'
+- name: '[websvr] Copy scripts'
+  copy:
+    src: ./scripts/server.sh
+    dest: /data/GoOne/websvr/server.sh
+    mode: '0755'
+  tags: "websvr_init"
+
+- name: '[websvr] Copy bin'
+  copy:
+    src: ../build/websvr
+    dest: /data/GoOne/websvr/websvr
+    mode: '755'
+    backup: yes
+  tags: "websvr_push"
+
+- name: '[websvr] start websvr'
+  shell: cd /data/GoOne/websvr; ./server.sh start; ./server.sh check
+  ignore_errors: yes
+  tags: 'websvr_start'
+
+- name: '[websvr] stop websvr'
+  shell: cd /data/GoOne/websvr; ./server.sh stop
+  ignore_errors: yes
+  tags: 'websvr_stop'
+
+- name: '[websvr] restart websvr'
+  shell: cd /data/GoOne/websvr; ./server.sh restart; ./server.sh check
+  ignore_errors: yes
+  tags: 'websvr_restart'
+
+- name: '[websvr] check websvr'
+  shell: cd /data/GoOne/websvr; ./server.sh check
+  ignore_errors: yes
+  tags: 'websvr_check'
+
+- name: '[websvr] delLog websvr'
+  shell: cd /data/GoOne/logs/websvr; rm ./*
+  ignore_errors: yes
+  tags: 'websvr_delLog'
