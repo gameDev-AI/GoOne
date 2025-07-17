@@ -78,9 +78,9 @@ friendsvr() {
   go build -o ${project_root_dir}/build/friendsvr
 }
 
-wbsvr() {
-  echo "building wbsvr !"
-  cd ${project_root_dir}/src/wbsvr
+websvr() {
+  echo "building websvr !"
+  cd ${project_root_dir}/src/web_svr
   go build -o ${project_root_dir}/build/wbsvr
 }
 
@@ -145,8 +145,8 @@ friend)
     friendsvr
     ;;
 
-wb)
-    wbsvr
+web)
+    websvr
     ;;
 
 rank)
@@ -169,7 +169,7 @@ guild)
     mailsvr
     chatsvr
     friendsvr
-    wbsvr
+    websvr
     ranksvr
     guildsvr
 esac

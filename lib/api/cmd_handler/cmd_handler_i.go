@@ -2,10 +2,12 @@ package cmd_handler
 
 import (
 	g1_protocol "github.com/Iori372552686/game_protocol/protocol"
+	"github.com/gin-gonic/gin"
 	"github.com/golang/protobuf/proto"
 )
 
 type CmdHandlerFunc func(c IContext, data []byte) g1_protocol.ErrorCode
+type WebHandlerFunc func(c *gin.Context, data []byte) gin.H
 
 // Transaction 实现了这个借口，在事务运行时保存了上下文
 type IContext interface {
@@ -30,4 +32,10 @@ type IContext interface {
 	Warningf(format string, args ...interface{})
 	Infof(format string, args ...interface{})
 	Debugf(format string, args ...interface{})
+}
+
+type RegCmdInterface interface {
+	Init() error
+	RegHttpCmd()
+	RegWsCmd()
 }

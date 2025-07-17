@@ -2,6 +2,7 @@ package gconf
 
 import (
 	"flag"
+	"github.com/Iori372552686/GoOne/lib/web/web_gin"
 
 	"github.com/Iori372552686/GoOne/lib/api/http_sign"
 	"github.com/Iori372552686/GoOne/lib/api/net_conf"
@@ -62,6 +63,14 @@ type TexasSvr struct {
 	LogLevel  string `yaml:"log_level"`
 }
 
+type WebSvr struct {
+	SelfBusId string `yaml:"SelfBusId"`
+	LogDir    string `yaml:"log_dir"`
+	LogLevel  string `yaml:"log_level"`
+
+	HttpServer web_gin.Config `json:"http_server" yaml:"http_server"`
+}
+
 // connsvr配置
 type ConnConfig struct {
 	BaseCfg `yaml:"basecfg"`
@@ -101,6 +110,14 @@ type RoomCenterConfig struct {
 }
 
 var RoomCenterSvrCfg RoomCenterConfig
+
+// websvr配置
+type webSvrConfig struct {
+	BaseCfg `yaml:"basecfg"`
+	WebSvr  `yaml:"websvr"`
+}
+
+var WebSvrCfg webSvrConfig
 
 // texassvr配置
 type TexasConfig struct {

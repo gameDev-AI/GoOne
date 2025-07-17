@@ -3,15 +3,13 @@ package web_gin
 import (
 	"errors"
 	"github.com/Iori372552686/GoOne/lib/api/logger"
+	"github.com/Iori372552686/GoOne/lib/api/logger/zap"
 	"github.com/Iori372552686/GoOne/lib/web/rest"
 	"time"
 
-	ginglog "github.com/szuecs/gin-glog"
-	sessions "github.com/tommy351/gin-sessions"
-
-	"strconv"
-
+	"github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 /**
@@ -28,6 +26,8 @@ func RunGin(conf Config, load_routers func(router *gin.Engine)) error {
 	if conf.Port <= 0 {
 		return errors.New("port args err!")
 	}
+	router := gin.New()
+	router.Use(rest.Cors())
 
 	//mode
 	switch conf.Mode {
@@ -39,12 +39,11 @@ func RunGin(conf Config, load_routers func(router *gin.Engine)) error {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	router := gin.New()
-	router.Use(rest.Cors())
-	router.Use(ginglog.Logger(3*time.Second), gin.Recovery())
-	router.Use(sessions.Middleware(conf.SessionName, sessions.NewCookieStore([]byte(conf.SessionName))))
-	//router.NoRoute(rest.NoRoute)
-	//router.NoMethod(rest.NoMethod)
+	// 使用 Zap 替换默认日志中间件
+	router.Use(
+		ginzap.Ginzap(zap.ZapLoger, time.RFC3339, true), // 记录请求日志 [1,4](@ref)
+		ginzap.RecoveryWithZap(zap.ZapLoger, true),      // 替换 gin.Recovery() [4](@ref)
+	)
 
 	//loadRoutes
 	load_routers(router)

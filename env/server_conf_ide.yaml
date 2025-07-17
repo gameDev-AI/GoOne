@@ -88,6 +88,18 @@ mysqlsvr:
   log_dir: ../logs
   log_level: debug
 
+websvr:
+  SelfBusId: 1.1.12.251
+  log_dir: ../logs
+  log_level: debug
+
+  http_server:
+    port: 10001
+    session_name: GoOne@Gin.Seeeion
+    mode: debug
+    auth_enable: false
+
+
 roomcentersvr:
   SelfBusId: 1.1.11.251
   log_dir: ../logs
@@ -97,3 +109,4 @@ texassvr:
   SelfBusId: 1.1.80.251
   log_dir: ../logs
   log_level: debug
+

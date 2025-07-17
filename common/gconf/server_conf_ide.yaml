@@ -88,6 +88,11 @@ mysqlsvr:
   log_dir: ../logs
   log_level: debug
 
+websvr:
+  SelfBusId: 1.1.12.251
+  log_dir: ../logs
+  log_level: debug
+
 roomcentersvr:
   SelfBusId: 1.1.11.251
   log_dir: ../logs

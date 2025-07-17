@@ -25,6 +25,7 @@ const (
 	ServerType_RankSvr       = 9  // 排行榜
 	ServerType_GuildSvr      = 10 // 公会（俱乐部）
 	ServerType_RoomCenterSvr = 11 // 房间中心服
+	ServerType_WebSvr        = 12 // web服，提供http restApi接口，供web端使用
 
 	//----- 游戏玩法服务 start-----
 	ServerType_TexasGameSvr = 0x50 // porker 德州游戏服
@@ -47,4 +48,5 @@ var ServerRouteRules = map[uint32]uint32{
 	ServerType_GuildSvr:      svrinstmgr.SvrRouterRule_Hash_RouterID,
 	ServerType_TexasGameSvr:  svrinstmgr.SvrRouterRule_Hash_RouterID,
 	ServerType_RummyGameSvr:  svrinstmgr.SvrRouterRule_Hash_RouterID,
+	ServerType_WebSvr:        svrinstmgr.SvrRouterRule_Random,
 }

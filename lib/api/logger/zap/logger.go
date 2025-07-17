@@ -27,8 +27,9 @@ import (
 )
 
 var (
-	logger  Logger
-	logLock sync.RWMutex
+	logger   Logger
+	logLock  sync.RWMutex
+	ZapLoger *zap.Logger
 )
 
 var levelMap = map[string]zapcore.Level{
@@ -91,6 +92,7 @@ func init() {
 	}
 	zapLoggerConfig.EncoderConfig = zapLoggerEncoderConfig
 	defaultLogger, _ := zapLoggerConfig.Build(zap.AddCaller(), zap.AddCallerSkip(1))
+	ZapLoger = defaultLogger
 	setLogger(&NacosLogger{defaultLogger.Sugar()})
 }
 
