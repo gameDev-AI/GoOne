@@ -4,7 +4,7 @@
 PRONAME="$1"					# 参数1
 PRO2="$2"					    # 参数2
 project_root_dir=$(pwd)
-export GOPATH=${project_root_dir}/gopath
+##export GOPATH=${project_root_dir}/gopath
 
 connsvr() {
   echo "building connsvr !"
