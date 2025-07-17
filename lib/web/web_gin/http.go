@@ -26,8 +26,6 @@ func RunGin(conf Config, load_routers func(router *gin.Engine)) error {
 	if conf.Port <= 0 {
 		return errors.New("port args err!")
 	}
-	router := gin.New()
-	router.Use(rest.Cors())
 
 	//mode
 	switch conf.Mode {
@@ -39,9 +37,10 @@ func RunGin(conf Config, load_routers func(router *gin.Engine)) error {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	// 使用 Zap 替换默认日志中间件
+	router := gin.New()
+	router.Use(rest.Cors())
 	router.Use(
-		ginzap.Ginzap(zap.ZapLoger, time.RFC3339, true), // 记录请求日志 [1,4](@ref)
+		ginzap.Ginzap(zap.ZapLoger, time.RFC3339, true), // 使用 Zap 替换默认日志中间件
 		ginzap.RecoveryWithZap(zap.ZapLoger, true),      // 替换 gin.Recovery() [4](@ref)
 	)
 
