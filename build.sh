@@ -81,7 +81,7 @@ friendsvr() {
 websvr() {
   echo "building websvr !"
   cd ${project_root_dir}/src/web_svr
-  go build -o ${project_root_dir}/build/wbsvr
+  go build -o ${project_root_dir}/build/websvr
 }
 
 ranksvr() {
