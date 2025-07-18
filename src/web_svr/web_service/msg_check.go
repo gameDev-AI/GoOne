@@ -16,10 +16,10 @@ func MsgSecCheck(req *define.MsgSecCheckReq) *g1_protocol.Ret {
 	}
 
 	// 检查敏感字
-	hasSensitiveWord, _ := sensitive_words.ChangeSensitiveWords(req.NickName)
+	hasSensitiveWord, _ := sensitive_words.ChangeSensitiveWords(req.MsgContent)
 	if hasSensitiveWord {
 		rsp.Code = g1_protocol.ErrorCode_ERR_SENSITIVE_WORD
-		rsp.Msg = "sensitive words found in nickname"
+		rsp.Msg = "sensitive words found in msg content"
 		return rsp
 	}
 

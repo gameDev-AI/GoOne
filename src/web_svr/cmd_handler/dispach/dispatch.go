@@ -31,7 +31,7 @@ func CmdHandlerProcess(ctx *gin.Context) {
 	}
 
 	//copy head
-	logger.Debugf("Request.Heade [%v]", ctx.Request.Header)
+	//logger.Debugf("Request.Heade [%v]", ctx.Request.Header)
 	for k, v := range ctx.Request.Header {
 		if len(v) == 0 {
 			continue
@@ -47,7 +47,7 @@ func CmdHandlerProcess(ctx *gin.Context) {
 	if index := strings.Index(uri, "?"); index > 0 {
 		uri = uri[:index]
 	}
-	cmd := strings.ReplaceAll(uri, define.RestApi_SafeMsg, "")
+	cmd := strings.ReplaceAll(uri, define.RestApi_SafeMsg_Dir, "")
 	handler, ok := cmd_handler.CmdHandler.ChMgr.GetHttpHandlers(cmd)
 	if !ok {
 		logger.Errorf("web no reg handler!  url | %v", uri)

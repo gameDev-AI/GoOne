@@ -73,7 +73,7 @@ func (self *WebApiController) Init(router *gin.Engine) error {
 * @Date: 2022-01-28 11:40:28
 **/
 func (self *WebApiController) router(router *gin.Engine) {
-	rg := router.Group(define.RestApi_SafeMsg)
+	rg := router.Group(define.RestApi_SafeMsg_Dir)
 	rg.Use(self.before())
 
 	//post

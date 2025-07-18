@@ -4,4 +4,4 @@ const (
 	MaxOrmLruCacheLimitNum int = 100
 )
 
-const RestApi_SafeMsg string = "/safe/msg/"
+const RestApi_SafeMsg_Dir string = "/safe/msg/"
