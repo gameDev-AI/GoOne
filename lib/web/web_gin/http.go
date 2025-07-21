@@ -41,7 +41,7 @@ func RunGin(conf Config, load_routers func(router *gin.Engine)) error {
 	router.Use(rest.Cors())
 	router.Use(
 		ginzap.Ginzap(zap.ZapLoger, time.RFC3339, true), // 使用 Zap 替换默认日志中间件
-		ginzap.RecoveryWithZap(zap.ZapLoger, true),      // 替换 gin.Recovery() [4](@ref)
+		ginzap.RecoveryWithZap(zap.ZapLoger, true),      // 替换 gin.Recovery()
 	)
 
 	//loadRoutes

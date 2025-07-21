@@ -61,42 +61,42 @@ yum install ansible.noarch
 ```
 ### 查看ansible脚本cmd
 ```
-root@iori GoMini]# ./main.sh
+root@iori GoOne]# ./main.sh
 Usage Cmd:{build|allbuild|xls|ptc|dep}
 ```
 
 ## host
 ```
-#GoMini/deploy/inithost host.txt
+#GoOne/deploy/inithost host.txt
 [local]
 127.0.0.1 ansible_ssh_user=root ansible_ssh_pass=pwd ansible_sudo_pass=Iori@123
 #pwd 你的root密码
 
-#GoMini/deploy/hosts/host_dev.txt
+#GoOne/deploy/hosts/host_dev.txt
 add
 [dev_local]
 127.0.0.1 ansible_ssh_user=root ansible_ssh_pass=123456 ansible_sudo_pass=123456
 
-#GoMini/deploy/playbook_dev/dev_local.yml
-#GoMini/deploy/playbook_dev/dev_local.vars
+#GoOne/deploy/playbook_dev/dev_local.yml
+#GoOne/deploy/playbook_dev/dev_local.vars
 ```
 
 ## init
 ```
-#GoMini/deploy/inithost
+#GoOne/deploy/inithost
 ansible-playbook -i host.txt inithost.yml 
 ```
 
 ## protoc
 ```
-#GoMini/lib/contrib/protoc/protoc-3.11.4-linux-x86_64/bin
+#GoOne/lib/contrib/protoc/protoc-3.11.4-linux-x86_64/bin
 cp protoc protoc-gen-go /usr/local/bin
 ```
 
 
 ## 编译部署
 ```
-#GoMini   --主目录 main.sh 控制台脚本
+#GoOne   --主目录 main.sh 控制台脚本
 ./main.sh allbuild    转xls_conf + 编译pb协议 + build go svr_src
 ./main.sh build    build go svr_src , 不带服务名则默认全部编译，带服务名单个编译
 ./main.sh xls    转xls_conf 
