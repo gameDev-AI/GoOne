@@ -5,3 +5,4 @@ build/*
 /logs
 deploy/hosts/host_dev.txt
 /deploy/hosts
+deploy/hosts/host_dev.txt
